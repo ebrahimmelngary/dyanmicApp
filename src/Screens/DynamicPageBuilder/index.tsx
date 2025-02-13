@@ -3,7 +3,6 @@ import { SafeAreaView } from 'react-native';
 import DynamicComponent from '../../components/DynamicComponent';
 import { FormContext, NavigationContext } from '../../context';
 import styles from './styles';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 interface Config {
   home: string;
@@ -20,9 +19,8 @@ interface DynamicPageBuilderProps {
       name?: string;
       email?: string;
     }
-    const stack = createNativeStackNavigator();
     const [formState, setFormState] = useState<FormState>({});
-    const [currentPage, setCurrentPage] = useState(config.home);
+    const [currentPage, _setCurrentPage] = useState(config.home);
 
     const handleAction = (actionType: string, data: any) => {
       switch (actionType) {
